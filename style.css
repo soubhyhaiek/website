@@ -21,6 +21,7 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.7;
     letter-spacing: 0.5px;
+    background-color: var(--bg-primary);
 }
 
 h1, h2 {
@@ -69,16 +70,21 @@ a {
 /* Header Start */
 #home {
     background-color: var(--bg-primary);
-    height: 100vh;
+    min-height: 100vh; /* Ensures full height of the viewport */
 }
 
 #home .navbar {
     background-color: #fff;
     border-bottom: 1px solid #ccc;
-    position: fixed;
+    position: relative;
     width: 100%;
     z-index: 1;
+    top: 0; /* Ensure it sticks to the top */
 }
+section {
+    scroll-margin-top: 80px; /* Adjust to the navbar's height */
+}
+
 
 #home .navbar nav {
     display: flex;
@@ -111,14 +117,15 @@ a {
     color: var(--secondary-color);
 }
 
+/* FIX: Add padding-top for header-content to compensate for the fixed navbar */
 #home .header-content {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     align-items: center;
     max-width: 1100px;
     margin: auto;
-    padding: 5rem 2rem 0;
-    height: 100%;
+    padding: 10rem 2rem 0; /* Increased top padding to compensate for navbar */
+    min-height: 100%; /* Ensure it grows with content */
 }
 
 #home .header-content p span {
@@ -157,11 +164,11 @@ a {
     padding: 6rem 0;
 }
 
-#about h2, #skills h2, #services h2, #contact, #portfolio h2, #testimonials h2, #blog h2, #faq h2 {
+#about h2, #skills h2, #services h2, #contact h2, #portfolio h2, #testimonials h2, #blog h2, #faq h2 {
     text-align: center;
     font-size: 38px;
     color: var(--primary-color);
-    font-weight: 600px;
+    font-weight: 600;
     letter-spacing: 1px;
 }
 
@@ -217,7 +224,7 @@ a {
 
 #about .col-2 i {
     margin-right: 8px;
-    color: var(--secondary-color);
+    color: var (--secondary-color);
 }
 
 /* Portfolio Section */
@@ -269,43 +276,6 @@ a {
     transform: translateY(-2px);
 }
 
-/* Skills Section */
-#skills {
-    background-color: var(--primary-color);
-}
-
-#skills h2 {
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-}
-
-#skills .skills-content {
-    margin-top: 2rem;
-    background-color: #0f272d;
-}
-
-#skills .skills-content .row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    align-items: center;
-    text-align: center;
-}
-
-#skills .skills-content .row .item {
-    color: #fff;
-    background-color: #000;
-    margin: 20px;
-    padding: 1rem;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-#skills .skills-content .row .item:hover {
-    box-shadow: 10px 10px 10px #1a97720c;
-}
-
 /* Services Section */
 #services {
     background: #00f4ab0c;
@@ -324,17 +294,6 @@ a {
 #services .row .item:hover {
     transform: translateY(-10px);
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
-}
-}
-
-#services .row .item h3::before {
-    content: url('path-to-icon'); /* Add an appropriate icon path here */
-    margin-right: 8px;
-    vertical-align: middle;
-}
-
-#services {
-    background: linear-gradient(to right, #f0fdfa, #e7f5fc);
 }
 
 /* Testimonials Section */
@@ -376,54 +335,6 @@ a {
     color: var(--secondary-color);
     margin-bottom: 10px;
 }
-/* Articles Container */
-.latest-articles .article-item {
-    background-color: #f9f9f9; /* Light background for each article */
-    padding: 20px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    text-align: left;
-}
-
-/* Hover Effect for Articles */
-.latest-articles .article-item:hover {
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-5px);
-    background-color: #fff; /* Slightly brighter on hover */
-}
-
-.latest-articles .article-item h3 {
-    font-size: 22px; /* Increase font size */
-    color: var(--primary-color); /* Ensure consistent color theme */
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.latest-articles .article-item h3:hover {
-    color: var(--secondary-color); /* Change color on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-}
-
-.latest-articles .article-item p {
-    color: var(--gray); /* Use consistent gray for subtitles */
-    margin-top: 10px;
-}
-
-/* Container Styling */
-.latest-articles {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for larger screens */
-    gap: 2rem; /* Add spacing between articles */
-    margin-top: 2rem;
-}
-
-/* For Smaller Screens */
-@media (max-width: 768px) {
-    .latest-articles {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
-    }
-}
-
 
 /* Blog Section */
 .blog-content {
@@ -460,28 +371,6 @@ a {
     background-color: #f9f9f9;
     transform: translateY(-5px);
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.faq-item h4 {
-    color: var(--primary-color);
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-}
-.faq-item p {
-    margin-left: 10px;
-    color: var(--gray);
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-/* Accordion Style FAQ */
-.faq-item h4 {
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.faq-item h4:hover {
-    color: var(--secondary-color);
 }
 
 /* Contact Section */
@@ -535,18 +424,64 @@ h2 span {
     color: transparent;
 }
 
-/* Media Queries - Responsive */
+/* Responsive Media Queries */
 @media (max-width: 768px) {
-    #about .about-content, #skills .skills-content .row, #services .row, #portfolio .item, .testimonials-content, .blog-content {
+    /* Stack layout for smaller screens */
+    #home .navbar nav {
+        display: block;
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    #home .navbar nav ul {
+        margin-top: 20px;
+        display: inline-block;
+    }
+
+    #home .navbar nav ul a {
+        margin: 0 10px;
+    }
+
+    #home #logo {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    #about .about-content,
+    #skills .skills-content .row,
+    #services .row,
+    #portfolio .item,
+    .testimonials-content,
+    .blog-content {
         grid-template-columns: 1fr;
         text-align: center;
     }
+    
+    #home .header-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 10rem 0 0; /* Adjusted padding for mobile */
+    }
+
+    #home .header-content h1 {
+        font-size: 40px;
+    }
+
+    #home .header-content img {
+        max-width: 300px;
+        margin: auto;
+        display: block;
+        margin-top: 20px;
+    }
+
     .btn-primary {
+        padding: 10px 20px;
         font-size: 14px;
     }
 }
 
 @media (max-width: 528px) {
+    /* Further adjustments for very small screens */
     .container {
         padding: 0 1rem;
     }
@@ -557,6 +492,19 @@ h2 span {
 
     #contact .row img {
         max-width: 200px;
+    }
+
+    #home .header-content h1 {
+        font-size: 30px;
+    }
+
+    #home .header-content p span,
+    #home .header-content .description {
+        font-size: 14px;
+    }
+
+    #about h2, #services h2, #portfolio h2, #testimonials h2 {
+        font-size: 30px;
     }
 
     #footer p {
